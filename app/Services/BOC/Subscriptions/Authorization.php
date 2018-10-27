@@ -11,6 +11,10 @@ class Authorization {
      */
     private $urls;
 
+    private $headers = [
+
+    ];
+
     public function __construct(BOCUrlFactory $urls) {
 
         $this->urls = $urls;

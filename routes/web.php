@@ -11,10 +11,19 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
+
     return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('actions', 'ActionController@index')->name('actions');
+
+Route::get('lend', 'ActionController@lend')->name('actions.lend');
+Route::post('lend', 'ActionController@createLend')->name('actions.lend.create');
+
+Route::get('borrow', 'ActionController@borrow')->name('actions.borrow');
+Route::get('borrow', 'ActionController@createBorrow')->name('actions.borrow.create');

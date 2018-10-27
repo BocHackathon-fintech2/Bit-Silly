@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration {
             $table->string('password');
             $table->rememberToken();
             $table->enum('role', ['lender', 'borrower'])->default('lender')->nullable();
+            $table->integer('score')->nullable();
+            $table->string('country')->nullable();
+            $table->string('registration_number')->nullable();
             $table->timestamps();
         });
     }
