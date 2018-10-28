@@ -36,10 +36,6 @@
                             @endif
 
                             <a href="#" class="list-group-item list-group-item-action">
-                                View Matches
-                            </a>
-
-                            <a href="#" class="list-group-item list-group-item-action">
                                 Collateral (TODO)
                             </a>
                         @endif
