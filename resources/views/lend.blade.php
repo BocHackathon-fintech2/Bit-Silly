@@ -16,20 +16,6 @@
                             </div>
                         @endif
 
-                            {{--
-                             $table->integer('user_id');
-            $table->string('subscription_id')->nullable();
-            $table->string('access_token')->nullable();
-            $table->dateTime('from')->nullable();
-            $table->dateTime('to')->nullable();
-            $table->integer('amount')->default(1000)->nullable();
-            $table->integer('rate')->nullable();
-            $table->integer('suggested_rate')->nullable();
-            $table->string('status')->nullable();
-            $table->integer('accepted_by_borrower_id')->nullable();
-            $table->timestamp('accepted_at')->nullable();
-                            --}}
-
                             <form method="POST" action="{{ route('actions.lend.create') }}">
                                 @csrf
 

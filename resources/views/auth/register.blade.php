@@ -12,7 +12,25 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                <label for="registration_number"
+                                       class="col-md-4 col-form-label text-md-right">{{ __('Company Registration Number') }}</label>
+
+                                <div class="col-md-6">
+                                    <input type="hidden" name="country" value="cy">
+                                    <input id="registration_number" type="text"
+                                           class="form-control{{ $errors->has('registration_number') ? ' is-invalid' : '' }}"
+                                           name="registration_number" value="{{ old('registration_number') ??  'HE165' }}" required>
+
+                                    @if ($errors->has('registration_number'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('registration_number') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Company Name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text"
@@ -43,6 +61,8 @@
                                     @endif
                                 </div>
                             </div>
+
+
 
                             <div class="form-group row">
                                 <label for="role"
@@ -101,6 +121,7 @@
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>

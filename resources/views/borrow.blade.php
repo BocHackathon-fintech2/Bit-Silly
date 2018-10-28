@@ -6,7 +6,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
+                    <div class="card-header"> Create a Borrowing Contract
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -15,145 +16,73 @@
                             </div>
                         @endif
 
-                        Create a Borrow Request
+                        <form method="POST" action="{{ route('borrow.create') }}">
+                            @csrf
+
+                            <div class="form-group row">
+                                <label for="start_from"
+                                       class="col-sm-4 col-form-label text-md-right">{{ __('From') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="start_from" type="date"
+                                           class="form-control{{ $errors->has('from') ? ' is-invalid' : '' }}"
+                                           name="from" value="{{ old('from') }}" required autofocus>
+
+                                    @if ($errors->has('from'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('from') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="finish_at"
+                                       class="col-sm-4 col-form-label text-md-right">{{ __('To') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="finish_at" type="date"
+                                           class="form-control{{ $errors->has('to') ? ' is-invalid' : '' }}" name="to"
+                                           value="{{ old('to') }}" required>
+
+                                    @if ($errors->has('to'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('to') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="amount"
+                                       class="col-sm-4 col-form-label text-md-right">{{ __('Amount') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="amount" type="number"
+                                           class="form-control{{ $errors->has('amount') ? ' is-invalid' : '' }}"
+                                           name="amount" value="{{ old('amount') }}" required>
+
+                                    @if ($errors->has('amount'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('amount') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-0">
+                                <div class="col-md-8 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Create') }}
+                                    </button>
 
 
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead class="thead">
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Lender Name</th>
-                                        <th>Score</th>
-                                        <th>Sex</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Lifna</td>
-                                        <td>23</td>
-                                        <td>Female</td>
-                                    </tr>
-
-                                    </tbody>
-
-                                </table>
+                                </div>
                             </div>
 
 
-                        <hr>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body p-0">
-                        <div class="row p-5">
-                            <div class="col-md-6">
-                                <img src="http://via.placeholder.com/400x90?text=logo">
-                            </div>
-
-                            <div class="col-md-6 text-right">
-                                <p class="font-weight-bold mb-1">Invoice #550</p>
-                                <p class="text-muted">Due to: 4 Dec, 2019</p>
-                            </div>
-                        </div>
-
-                        <hr class="my-5">
-
-                        <div class="row pb-5 p-5">
-                            <div class="col-md-6">
-                                <p class="font-weight-bold mb-4">Client Information</p>
-                                <p class="mb-1">John Doe, Mrs Emma Downson</p>
-                                <p>Acme Inc</p>
-                                <p class="mb-1">Berlin, Germany</p>
-                                <p class="mb-1">6781 45P</p>
-                            </div>
-
-                            <div class="col-md-6 text-right">
-                                <p class="font-weight-bold mb-4">Payment Details</p>
-                                <p class="mb-1"><span class="text-muted">VAT: </span> 1425782</p>
-                                <p class="mb-1"><span class="text-muted">VAT ID: </span> 10253642</p>
-                                <p class="mb-1"><span class="text-muted">Payment Type: </span> Root</p>
-                                <p class="mb-1"><span class="text-muted">Name: </span> John Doe</p>
-                            </div>
-                        </div>
-
-                        <div class="row p-5">
-                            <div class="col-md-12">
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th class="border-0 text-uppercase small font-weight-bold">ID</th>
-                                        <th class="border-0 text-uppercase small font-weight-bold">Item</th>
-                                        <th class="border-0 text-uppercase small font-weight-bold">Description</th>
-                                        <th class="border-0 text-uppercase small font-weight-bold">Quantity</th>
-                                        <th class="border-0 text-uppercase small font-weight-bold">Unit Cost</th>
-                                        <th class="border-0 text-uppercase small font-weight-bold">Total</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Software</td>
-                                        <td>LTS Versions</td>
-                                        <td>21</td>
-                                        <td>$321</td>
-                                        <td>$3452</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Software</td>
-                                        <td>Support</td>
-                                        <td>234</td>
-                                        <td>$6356</td>
-                                        <td>$23423</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Software</td>
-                                        <td>Sofware Collection</td>
-                                        <td>4534</td>
-                                        <td>$354</td>
-                                        <td>$23434</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div class="d-flex flex-row-reverse bg-dark text-white p-4">
-                            <div class="py-3 px-5 text-right">
-                                <div class="mb-2">Grand Total</div>
-                                <div class="h2 font-weight-light">$234,234</div>
-                            </div>
-
-                            <div class="py-3 px-5 text-right">
-                                <div class="mb-2">Discount</div>
-                                <div class="h2 font-weight-light">10%</div>
-                            </div>
-
-                            <div class="py-3 px-5 text-right">
-                                <div class="mb-2">Sub - Total amount</div>
-                                <div class="h2 font-weight-light">$32,432</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank"
-                                                                    href="http://totoprayogo.com">totoprayogo.com</a>
-        </div>
-
     </div>
 @endsection

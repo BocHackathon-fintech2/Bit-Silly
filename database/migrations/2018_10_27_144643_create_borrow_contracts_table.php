@@ -17,11 +17,10 @@ class CreateBorrowContractsTable extends Migration {
 
             $table->increments('id');
             $table->integer('user_id');
-            $table->text('response')->nullable();
             $table->dateTime('from')->nullable();
             $table->dateTime('to')->nullable();
             $table->integer('amount')->default(1000)->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default('unmatched')->nullable();
             $table->integer('accepted_by_lender_id')->nullable();
             $table->timestamp('accepted_at')->nullable();
             $table->timestamps();

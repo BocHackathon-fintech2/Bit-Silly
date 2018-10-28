@@ -7,14 +7,8 @@ use Zttp\Zttp;
 
 class BOCUrlFactory {
 
-    private function url($url) {
-
-        return vsprintf('%s/%s', [
-            'https://sandbox-apis.bankofcyprus.com/df-boc-org-sb/sb', ltrim($url, '/'),
-        ]);
-    }
-
     private $boc_endpoints = [
+        'token'                  => '/psd2/oauth2/token',
         'subscriptions'          => '/psd2/v1/subscriptions',
         'subscriptions/accounts' => '/psd2/v1/subscriptions/accounts',
         'accounts'               => '/psd2/v1/accounts',
@@ -26,10 +20,16 @@ class BOCUrlFactory {
         'sign'                   => '/jwssignverifyapi/sign',
         'verify'                 => '/jwssignverifyapi/verify',
         'auth'                   => '/psd2/oauth2/authorize',
-        'token'                  => '/psd2/oauth2/token',
         'introspect'             => '/psd2/oauth2/introspect',
         'cif'                    => '/psd2/v1/customers',
     ];
+
+    private function url($url) {
+
+        return vsprintf('%s/%s', [
+            'https://sandbox-apis.bankofcyprus.com/df-boc-org-sb/sb', ltrim($url, '/'),
+        ]);
+    }
 
     /**
      * @param $key
@@ -44,7 +44,6 @@ class BOCUrlFactory {
 
         throw new InvalidEndpointException();
     }
-
 
 
 }

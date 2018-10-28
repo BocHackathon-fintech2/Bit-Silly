@@ -25,7 +25,7 @@ class CreateLendingContractsTable extends Migration {
             $table->integer('amount')->default(1000)->nullable();
             $table->integer('rate')->nullable();
             $table->integer('suggested_rate')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default('pending')->nullable();
             $table->integer('accepted_by_borrower_id')->nullable();
             $table->timestamp('accepted_at')->nullable();
             $table->timestamps();
